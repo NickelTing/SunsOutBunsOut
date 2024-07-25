@@ -1,0 +1,6 @@
+@SunsOutBunsOut_HostAddress = http://localhost:5163
+
+GET {{SunsOutBunsOut_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
