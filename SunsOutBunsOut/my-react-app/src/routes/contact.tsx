@@ -8,7 +8,7 @@ interface Contact {
     twitter: string;
     notes: string;
     favorite: boolean;
-  }
+}
 
 interface FavoriteProps {
     contact: Contact;
