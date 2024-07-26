@@ -6,7 +6,8 @@ import {
     useNavigate,
 } from "react-router-dom";
 // @ts-ignore
-import { updateContact } from "../contacts";
+import { updateContact } from "../contacts.ts";
+
 
 export async function action({ request, params }: ActionFunctionArgs) {
     const formData = await request.formData();
