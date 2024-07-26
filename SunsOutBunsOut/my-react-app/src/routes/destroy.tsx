@@ -1,5 +1,4 @@
 import { ActionFunctionArgs, redirect,  } from "react-router-dom";
-// @ts-ignore
 import { deleteContact } from "../contacts.ts";
 
 export async function action({ params }: ActionFunctionArgs) {

@@ -8,7 +8,6 @@ import {
   useNavigation,
   LoaderFunctionArgs,
  } from "react-router-dom";
-// @ts-ignore
 import { getContacts, createContact } from "../contacts";
 import { useEffect } from "react";
 

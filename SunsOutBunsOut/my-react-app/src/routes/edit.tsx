@@ -5,7 +5,6 @@ import {
     ActionFunctionArgs,
     useNavigate,
 } from "react-router-dom";
-// @ts-ignore
 import { updateContact } from "../contacts.ts";
 
 
