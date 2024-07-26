@@ -4560,11 +4560,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nicky\\OneDrive - University of Canterbury\\Documents\\GitHub\\SunsOutBunsOut\\backend\\SunsOutBunsOut.csproj",
+      "projectUniqueName": "C:\\Users\\nicky\\OneDrive - University of Canterbury\\Documents\\GitHub\\SunsOutBunsOut\\SunsOutBunsOut\\SunsOutBunsOut.csproj",
       "projectName": "SunsOutBunsOut",
-      "projectPath": "C:\\Users\\nicky\\OneDrive - University of Canterbury\\Documents\\GitHub\\SunsOutBunsOut\\backend\\SunsOutBunsOut.csproj",
+      "projectPath": "C:\\Users\\nicky\\OneDrive - University of Canterbury\\Documents\\GitHub\\SunsOutBunsOut\\SunsOutBunsOut\\SunsOutBunsOut.csproj",
       "packagesPath": "C:\\Users\\nicky\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nicky\\OneDrive - University of Canterbury\\Documents\\GitHub\\SunsOutBunsOut\\backend\\obj\\",
+      "outputPath": "C:\\Users\\nicky\\OneDrive - University of Canterbury\\Documents\\GitHub\\SunsOutBunsOut\\SunsOutBunsOut\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
