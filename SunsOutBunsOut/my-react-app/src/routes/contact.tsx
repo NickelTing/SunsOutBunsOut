@@ -1,29 +1,32 @@
-import { Form } from "react-router-dom";
+import { Form, useLoaderData, LoaderFunctionArgs } from "react-router-dom";
+// @ts-ignore
+import { getContact } from "../contacts";
 
 interface Contact {
-    id: number;
-    first: string;
-    last: string;
-    avatar: string;
-    twitter: string;
-    notes: string;
-    favorite: boolean;
+  id: string;
+  first: string;
+  last: string;
+  avatar: string;
+  twitter: string;
+  notes: string;
+  favorite: boolean;
 }
 
 interface FavoriteProps {
-    contact: Contact;
+  contact: Contact;
 }
 
+
+export async function loader({ params }: LoaderFunctionArgs) {
+  const contact = await getContact(params.contactId);
+  return { contact };
+}
+
+
 export default function Contact() {
-  const contact = {
-    id: 1,
-    first: "Your",
-    last: "Name",
-    avatar: "https://robohash.org/you.png?size=200x200",
-    twitter: "your_handle",
-    notes: "Some notes",
-    favorite: true,
-  };
+
+  const { contact } = useLoaderData() as { contact: Contact};
+  
 
   return (
     <div id="contact">
