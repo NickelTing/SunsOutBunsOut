@@ -1,5 +1,6 @@
 export interface Burgers {
     id: number;
-    Name: string;
+    Name?: string;
+    Description?: string;
     IsGlutenFree: boolean;
 }
