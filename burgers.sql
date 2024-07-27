@@ -1,3 +1,6 @@
+-- SQL script to create local database and table, and insert sample data 
+-- NOTE: the connection string in program.cs uses the server of (localdb)\\MSSQLLOCALDB 
+
 CREATE DATABASE SunsOutBunsOut;
 GO
 
