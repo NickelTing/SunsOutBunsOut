@@ -7,49 +7,49 @@ namespace backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StudentsController : ControllerBase
+    public class BurgersController : ControllerBase
     {
         private readonly IBurgerRepository _repository;
 
-        public StudentsController(IBurgerRepository repository)
+        public BurgersController(IBurgerRepository repository)
         {
             _repository = repository;
         }
 
         // GET: api/Burgers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Burger>>> GetStudents()
+        public async Task<ActionResult<IEnumerable<Burger>>> GetBurgers()
         {
-            var students = await _repository.GetAllBurgersAsync();
-            return Ok(students);
+            var burgers = await _repository.GetAllBurgersAsync();
+            return Ok(burgers);
         }
 
         // GET: api/Burgers/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Burger>> GetStudent(long id)
+        public async Task<ActionResult<Burger>> GetBurger(long id)
         {
-            var student = await _repository.GetBurgerByIdAsync(id);
+            var burger = await _repository.GetBurgerByIdAsync(id);
 
-            if (student == null)
+            if (burger == null)
             {
                 return NotFound();
             }
 
-            return Ok(student);
+            return Ok(burger);
         }
 
         // PUT: api/Burgers/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutStudent(long id, Burger student)
+        public async Task<IActionResult> PutBurger(long id, Burger burger)
         {
-            if (id != student.Id)
+            if (id != burger.Id)
             {
                 return BadRequest();
             }
 
             try
             {
-                await _repository.UpdateBurgerAsync(student);
+                await _repository.UpdateBurgerAsync(burger);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -68,18 +68,18 @@ namespace backend.Controllers
 
         // POST: api/Burgers
         [HttpPost]
-        public async Task<ActionResult<Burger>> PostStudent(Burger burger)
+        public async Task<ActionResult<Burger>> PostBurger(Burger burger)
         {
             await _repository.AddBurgerAsync(burger);
-            return CreatedAtAction("GetStudent", new { id = burger.Id }, burger);
+            return CreatedAtAction("GetBurger", new { id = burger.Id }, burger);
         }
 
         // DELETE: api/Burgers/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteStudent(long id)
+        public async Task<IActionResult> DeleteBurger(long id)
         {
-            var student = await _repository.GetBurgerByIdAsync(id);
-            if (student == null)
+            var burger = await _repository.GetBurgerByIdAsync(id);
+            if (burger == null)
             {
                 return NotFound();
             }
@@ -91,16 +91,16 @@ namespace backend.Controllers
 
         // POST: api/Burgers/bulk
         [HttpPost("bulk")]
-        public async Task<ActionResult<IEnumerable<Burger>>> BulkCreateStudents(IEnumerable<Burger> students)
+        public async Task<ActionResult<IEnumerable<Burger>>> BulkCreateBurgers(IEnumerable<Burger> burgers)
         {
-            if (students == null || !students.Any())
+            if (burgers == null || !burgers.Any())
             {
-                return BadRequest("Student data is required.");
+                return BadRequest("Burger data is required.");
             }
 
-            await _repository.BulkAddBurgersAsync(students);
+            await _repository.BulkAddBurgersAsync(burgers);
 
-            return Ok(students);
+            return Ok(burgers);
         }
     }
 }

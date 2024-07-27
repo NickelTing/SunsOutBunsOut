@@ -8,4 +8,5 @@ public class BurgerContext : DbContext
     }
 
     public DbSet<Models.Burger> Burger { get; set; } = default!;
+
 }
