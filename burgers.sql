@@ -1,5 +1,6 @@
 -- SQL script to create local database and table, and insert sample data 
 -- NOTE: the connection string in program.cs uses the server of (localdb)\\MSSQLLOCALDB 
+-- (please activate if not already)
 
 CREATE DATABASE SunsOutBunsOut;
 GO
@@ -22,5 +23,3 @@ INSERT INTO Burgers (Name, Description, IsGlutenFree) VALUES
 GO
 
 SELECT * FROM Burgers;
-
-
