@@ -1,7 +1,7 @@
 # SunsOutBunsOut
 A Full Stack ASP.NET Core Project which manages online food (burgers) menu.
 
-## Packages
+### Packages
 Install the packages by running the commands below:
 - npm install react-router-dom
 - npm install localforage match-sorter sort-by
