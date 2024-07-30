@@ -1,69 +1,61 @@
 import localforage from "localforage";
 import { matchSorter } from "match-sorter";
 import sortBy from "sort-by";
+import type { Burger } from './Models/Burgers';
 
-// Define the types for a Contact
-interface Contact {
-  id: string;
-  first?: string;
-  last?: string;
-  createdAt: number;
-  [key: string]: any; // To allow for other properties
-}
-
-export async function getContacts(query?: string): Promise<Contact[]> {
-  await fakeNetwork(`getContacts:${query}`);
-  let contacts: Contact[] | null = await localforage.getItem<Contact[]>("contacts");
-  if (!contacts) contacts = [];
+export async function getBurgers(query?: string): Promise<Burger[]> {
+  await fakeNetwork(`getBurgers:${query}`);
+  let burgers: Burger[] | null = await localforage.getItem<Burger[]>("burgers");
+  if (!burgers) burgers = [];
   if (query) {
-    contacts = matchSorter(contacts, query, { keys: ["first", "last"] });
+    burgers = matchSorter(burgers, query, { keys: ["id"] });
   }
-  return contacts.sort(sortBy("last", "createdAt"));
+  return burgers.sort(sortBy("id"));
 }
 
-export async function createContact(): Promise<Contact> {
+export async function createBurger(): Promise<Burger> {
   await fakeNetwork();
-  let id = Math.random().toString(36).substring(2, 9);
-  let contact: Contact = { id, createdAt: Date.now() };
-  let contacts = await getContacts();
-  contacts.unshift(contact);
-  await set(contacts);
-  return contact;
+  let burgers = await getBurgers();
+  let id = burgers.length + 1;
+  let burger: Burger = { id, IsGlutenFree: false };
+  burgers.push(burger);
+  await set(burgers);
+  return burger;
 }
 
-export async function getContact(id: string): Promise<Contact | null> {
-  await fakeNetwork(`contact:${id}`);
-  let contacts: Contact[] | null = await localforage.getItem<Contact[]>("contacts");
-  if (!contacts) return null;
-  let contact = contacts.find(contact => contact.id === id);
-  return contact ?? null;
+export async function getBurger(id: string): Promise<Burger | null> {
+  await fakeNetwork(`burgers:${id}`);
+  let burgers: Burger[] | null = await localforage.getItem<Burger[]>("burgers");
+  if (!burgers) return null;
+  let burger = burgers.find(burger => burger.id.toString() === id);
+  return burger ?? null;
 }
 
-export async function updateContact(id: string, updates: Partial<Contact>): Promise<Contact> {
+export async function updateBurger(id: string, updates: Partial<Burger>): Promise<Burger> {
   await fakeNetwork();
-  let contacts: Contact[] | null = await localforage.getItem<Contact[]>("contacts");
-  if (!contacts) throw new Error("No contacts found");
-  let contact = contacts.find(contact => contact.id === id);
-  if (!contact) throw new Error(`No contact found for id: ${id}`);
-  Object.assign(contact, updates);
-  await set(contacts);
-  return contact;
+  let burgers: Burger[] | null = await localforage.getItem<Burger[]>("burgers");
+  if (!burgers) throw new Error("No burgers found");
+  let burger = burgers.find(burger => burger.id.toString() === id);
+  if (!burger) throw new Error(`No burger found for id: ${id}`);
+  Object.assign(burger, updates);
+  await set(burgers);
+  return burger;
 }
 
-export async function deleteContact(id: string): Promise<boolean> {
-  let contacts: Contact[] | null = await localforage.getItem<Contact[]>("contacts");
-  if (!contacts) return false;
-  let index = contacts.findIndex(contact => contact.id === id);
+export async function deleteBurger(id: string): Promise<boolean> {
+  let burgers: Burger[] | null = await localforage.getItem<Burger[]>("burgers");
+  if (!burgers) return false;
+  let index = burgers.findIndex(burger => burger.id.toString() === id);
   if (index > -1) {
-    contacts.splice(index, 1);
-    await set(contacts);
+    burgers.splice(index, 1);
+    await set(burgers);
     return true;
   }
   return false;
 }
 
-function set(contacts: Contact[]): Promise<Contact[]> {
-  return localforage.setItem("contacts", contacts);
+function set(burgers: Burger[]): Promise<Burger[]> {
+  return localforage.setItem("burgers", burgers);
 }
 
 // fake a cache so we don't slow down stuff we've already seen

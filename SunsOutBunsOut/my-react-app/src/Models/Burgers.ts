@@ -1,4 +1,4 @@
-export interface Burgers {
+export interface Burger {
     id: number;
     Name?: string;
     Description?: string;

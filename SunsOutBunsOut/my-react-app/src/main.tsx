@@ -4,16 +4,25 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-
 import './index.css'
-import Root from "./routes/root";
+import Root, { loader as rootLoader } from "./routes/root";
+import ErrorPage from './routes/error-page';
+import Burger from './routes/burger';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-  }
-])
+    errorElement: <ErrorPage />,
+    loader: rootLoader,
+    children: [
+      {
+        path: "burgers/:burgerid",
+        element: <Burger />,
+      },
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
