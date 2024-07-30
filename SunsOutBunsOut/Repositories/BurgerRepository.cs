@@ -17,7 +17,7 @@ namespace Repositories
             return await _context.Burger.ToListAsync();
         }
 
-        public async Task<Burger> GetBurgerByIdAsync(long id)
+        public async Task<Burger> GetBurgerByIdAsync(int id)
         {
             return await _context.Burger.FindAsync(id);
         }
@@ -34,7 +34,7 @@ namespace Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteBurgerAsync(long id)
+        public async Task DeleteBurgerAsync(int id)
         {
             var student = await _context.Burger.FindAsync(id);
             if (student != null)
@@ -44,7 +44,7 @@ namespace Repositories
             }
         }
 
-        public async Task<bool> BurgerExistsAsync(long id)
+        public async Task<bool> BurgerExistsAsync(int id)
         {
             return await _context.Burger.AnyAsync(e => e.Id == id);
         }

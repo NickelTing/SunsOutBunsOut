@@ -26,7 +26,7 @@ namespace backend.Controllers
 
         // GET: api/Burgers/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Burger>> GetBurger(long id)
+        public async Task<ActionResult<Burger>> GetBurger(int id)
         {
             var burger = await _repository.GetBurgerByIdAsync(id);
 
@@ -40,7 +40,7 @@ namespace backend.Controllers
 
         // PUT: api/Burgers/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBurger(long id, Burger burger)
+        public async Task<IActionResult> PutBurger(int id, Burger burger)
         {
             if (id != burger.Id)
             {
@@ -76,7 +76,7 @@ namespace backend.Controllers
 
         // DELETE: api/Burgers/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBurger(long id)
+        public async Task<IActionResult> DeleteBurger(int id)
         {
             var burger = await _repository.GetBurgerByIdAsync(id);
             if (burger == null)
