@@ -6,13 +6,18 @@ import {
   Form,
   redirect,
   useNavigation,
+  LoaderFunction,
+  LoaderFunctionArgs,
+  useSubmit,
 } from "react-router-dom";
 import { getBurgers, createBurger } from "../burger";
 import type { Burger } from '../Models/Burgers';
+import { useEffect } from "react";
 
 // Define the type for the loader return value
 interface LoaderData {
   burgers: Burger[];
+  q: string | undefined;
 }
 
 export async function action() {
@@ -21,40 +26,64 @@ export async function action() {
 }
 
 // Loader function
-export async function loader(): Promise<LoaderData> {
-  const burgers = await getBurgers();
-  return { burgers };
-}
+export const loader: LoaderFunction = async ({ request }: LoaderFunctionArgs): Promise<LoaderData> => {
+  const url = new URL(request.url);
+  const q = url.searchParams.get("q") ?? undefined;
+  const burgers = await getBurgers(q);
+  return { burgers, q };
+};
 
 // Root component
 export default function Root() {
   // Use useLoaderData with the correct type
-  const { burgers } = useLoaderData() as LoaderData;
+  const { burgers, q } = useLoaderData() as LoaderData;
   const navigation = useNavigation();
+  const submit = useSubmit();
+
+  const searching =
+    navigation.location &&
+    new URLSearchParams(navigation.location.search).has(
+      "q"
+    );
+
+  useEffect(() => {
+    const inputElement = document.getElementById("q") as HTMLInputElement | null;
+    if (inputElement) {
+      inputElement.value = q ?? "";
+    }
+  }, [q]);
 
   return (
     <>
       <div id="sidebar">
         <h1>SunsOutBunsOut</h1>
         <div>
-          <form id="search-form" role="search">
+          <Form id="search-form" role="search">
             <input
               id="q"
+              className={searching ? "loading" : ""}
               aria-label="Search burgers"
               placeholder="Search"
               type="search"
               name="q"
+              defaultValue={q}
+              onChange={(event) => {
+                const isFirstSearch = q == null;
+                submit(event.currentTarget.form, {
+                  replace: !isFirstSearch,
+                });
+              }}
             />
             <div
               id="search-spinner"
               aria-hidden
-              hidden={true}
+              hidden={!searching}
             />
             <div
               className="sr-only"
               aria-live="polite"
             ></div>
-          </form>
+          </Form>
           <Form method="post">
             <button type="submit">New</button>
           </Form>

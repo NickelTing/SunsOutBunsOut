@@ -16,6 +16,8 @@ import Burger, {
 import EditBurger, {
   action as editAction,
 } from './routes/edit';
+import { action as destroyAction } from "./routes/destroy";
+import Index from "./routes/index";
 
 const router = createBrowserRouter([
   {
@@ -25,20 +27,30 @@ const router = createBrowserRouter([
     loader: rootLoader,
     action: rootAction,
     children: [
-      {
-        path: "burgers/:burgerid",
-        element: <Burger />,
-        loader: burgerLoader,
+      { 
+        errorElement: <ErrorPage />,
+        children: [
+          { index: true, element: <Index />},
+          {
+            path: "burgers/:burgerid",
+            element: <Burger />,
+            loader: burgerLoader,
+          },
+          {
+            path: "burgers/:burgerid/edit",
+            element: <EditBurger />,
+            loader: burgerLoader,
+            action: editAction,
+          },
+          {
+            path: "burgers/:burgerId/destroy",
+            action: destroyAction,
+            errorElement: <div>Oops! There was an error.</div>
+          },
+        ],
       },
-      {
-        path: "burgers/:burgerid/edit",
-        element: <EditBurger />,
-        loader: burgerLoader,
-        action: editAction,
-      }
-    ],
-  },
-]);
+    ]
+  }]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

@@ -10,7 +10,10 @@ export async function loader({ params }: LoaderFunctionArgs) {
   const burgerId = params.burgerid;
   if (!burgerId) {
     // Handle the case where burgerId is undefined
-    throw new Error("Burger ID is required");
+    throw new Response("", {
+      status: 404,
+      statusText: "Not Found",
+    });
   }
   // Now burgerId is guaranteed to be a string
   const burger = await getBurger(burgerId);

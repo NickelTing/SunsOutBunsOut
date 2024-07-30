@@ -8,7 +8,7 @@ export async function getBurgers(query?: string): Promise<Burger[]> {
   let burgers: Burger[] | null = await localforage.getItem<Burger[]>("burgers");
   if (!burgers) burgers = [];
   if (query) {
-    burgers = matchSorter(burgers, query, { keys: ["id"] });
+    burgers = matchSorter(burgers, query, { keys: ["Name"] });
   }
   return burgers.sort(sortBy("id"));
 }
