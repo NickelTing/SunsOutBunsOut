@@ -37,6 +37,7 @@ export async function updateBurger(id: string, updates: Partial<Burger>): Promis
   if (!burgers) throw new Error("No burgers found");
   let burger = burgers.find(burger => burger.id.toString() === id);
   if (!burger) throw new Error(`No burger found for id: ${id}`);
+  // Apply updates to the burger
   Object.assign(burger, updates);
   await set(burgers);
   return burger;

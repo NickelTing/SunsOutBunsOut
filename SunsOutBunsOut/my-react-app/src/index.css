@@ -84,6 +84,19 @@ form[action$="destroy"] button {
   color: #f44250;
 }
 
+.gluten-free-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.gluten-free-btn:hover {
+  opacity: 0.8;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -313,14 +326,18 @@ i {
 #burger-form > p:first-child > :nth-child(2) {
   margin-right: 1rem;
 }
-#burger-form > p:first-child,
+/* Flexbox layout for all <p> and <label> elements inside the form */
+#burger-form > p,
 #burger-form label {
   display: flex;
 }
-#burger-form p:first-child span,
+
+/* Set a fixed width for <span> elements inside all <p> and <label> elements */
+#burger-form p span,
 #burger-form label span {
   width: 8rem;
 }
+
 #burger-form p:first-child input,
 #burger-form label input,
 #burger-form label textarea {

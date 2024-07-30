@@ -1,14 +1,27 @@
-import { Form } from "react-router-dom";
+import { Form, useLoaderData, LoaderFunctionArgs  } from "react-router-dom";
+import { getBurger } from "../burger";
 import type { Burger } from '../Models/Burgers';
+
+interface LoaderData {
+  burger: Burger;
+}
+
+export async function loader({ params }: LoaderFunctionArgs) {
+  const burgerId = params.burgerid;
+  if (!burgerId) {
+    // Handle the case where burgerId is undefined
+    throw new Error("Burger ID is required");
+  }
+  // Now burgerId is guaranteed to be a string
+  const burger = await getBurger(burgerId);
+  return { burger };
+}
 
 // Define the Burger component
 export default function Burger() {
-  const burger: Burger = {
-    id: 100,
-    Name: "Nickel Burger",
-    Description: "The best burger in the shop",
-    IsGlutenFree: true,
-  };
+  const { burger } = useLoaderData() as LoaderData;
+  console.log(burger)
+
 
   return (
     <div id="burger">
@@ -23,7 +36,19 @@ export default function Burger() {
           )}{" "}
         </h1>
 
-        {burger.Description && <p>{burger.Description}</p>}
+        <p>
+          {burger.Description ? burger.Description : "No Description"}
+        </p>
+
+        {burger.IsGlutenFree ? (
+          <span role="img" aria-label="Gluten Free" className="gluten-free">
+            Gluten-Free <span className="green-tick">✔️</span>
+          </span>
+        ) : (
+          <span role="img" aria-label="Not Gluten Free" className="not-gluten-free">
+            Gluten-Free ❌
+          </span>
+        )}
 
         <div>
           <Form action="edit">
