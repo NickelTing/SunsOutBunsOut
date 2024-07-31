@@ -1,7 +1,13 @@
 # SunsOutBunsOut
 A Full Stack ASP.NET Core Project which manages online food (burgers) menu.
 
-### Packages
+### Prerequisite and Packages
+Before starting the project, please make sure you have the following installed:
+- Dotnet (latest version)
+- SQL Server Management Studio (SSMS)
+- 
+
+
 Install the packages by running the commands below:
 - npm install vite
 - npm install react-router-dom
