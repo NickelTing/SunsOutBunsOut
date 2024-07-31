@@ -14,6 +14,7 @@ import {
 import { getBurgers, createBurger } from "../Services/BurgerService";
 import type { Burger } from '../Models/Burgers';
 import { useTheme } from '../ThemeContext'; // Import the theme context
+import BurgerMenu from "./menu";
 
 // Define the type for the loader return value
 interface LoaderData {
