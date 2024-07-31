@@ -5,7 +5,7 @@ A Full Stack ASP.NET Core Project which manages online food (burgers) menu.
 Before starting the project, please make sure you have the following installed:
 - Dotnet (latest version)
 - SQL Server Management Studio (SSMS)
-- 
+- LocalDB (through the Visual Studio Installer, as part of the Data Storage and Processing workload, the ASP.NET and web development workload, or as an individual component.)
 
 Install the packages by running the commands below:
 - npm install vite
