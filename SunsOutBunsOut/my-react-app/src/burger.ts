@@ -27,7 +27,7 @@ export async function getBurger(id: string): Promise<Burger | null> {
   await fakeNetwork(`burgers:${id}`);
   let burgers: Burger[] | null = await localforage.getItem<Burger[]>("burgers");
   if (!burgers) return null;
-  let burger = burgers.find(burger => burger.id.toString() === id);
+  let burger = burgers.find(burger => burger.id !== null && burger.id !== undefined && burger.id.toString() === id);
   return burger ?? null;
 }
 
@@ -35,7 +35,7 @@ export async function updateBurger(id: string, updates: Partial<Burger>): Promis
   await fakeNetwork();
   let burgers: Burger[] | null = await localforage.getItem<Burger[]>("burgers");
   if (!burgers) throw new Error("No burgers found");
-  let burger = burgers.find(burger => burger.id.toString() === id);
+  let burger = burgers.find(burger => burger.id !== null && burger.id !== undefined && burger.id.toString() === id);
   if (!burger) throw new Error(`No burger found for id: ${id}`);
   // Apply updates to the burger
   Object.assign(burger, updates);
@@ -46,7 +46,7 @@ export async function updateBurger(id: string, updates: Partial<Burger>): Promis
 export async function deleteBurger(id: string): Promise<boolean> {
   let burgers: Burger[] | null = await localforage.getItem<Burger[]>("burgers");
   if (!burgers) return false;
-  let index = burgers.findIndex(burger => burger.id.toString() === id);
+  let index = burgers.findIndex(burger => burger.id !== null && burger.id !== undefined && burger.id.toString() === id);
   if (index > -1) {
     burgers.splice(index, 1);
     await set(burgers);

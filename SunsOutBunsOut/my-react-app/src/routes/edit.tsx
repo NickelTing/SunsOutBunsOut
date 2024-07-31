@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import { useState } from 'react';
 import { Burger } from "../Models/Burgers";
-import { updateBurger } from "../burger";
+import { updateBurger } from "../Services/BurgerService";
 
 // Define the type for the loader return value
 interface LoaderData {

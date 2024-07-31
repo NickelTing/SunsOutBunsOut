@@ -36,10 +36,10 @@ namespace Repositories
 
         public async Task DeleteBurgerAsync(int id)
         {
-            var student = await _context.Burger.FindAsync(id);
-            if (student != null)
+            var burger = await _context.Burger.FindAsync(id);
+            if (burger != null)
             {
-                _context.Burger.Remove(student);
+                _context.Burger.Remove(burger);
                 await _context.SaveChangesAsync();
             }
         }

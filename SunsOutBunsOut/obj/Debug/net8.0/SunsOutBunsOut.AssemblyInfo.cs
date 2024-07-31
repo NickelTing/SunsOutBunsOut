@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SunsOutBunsOut")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22b006c6811cfb3deb18ea984367034b425ced72")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cbb1a9fc0f1f04a3af7d52253df9d534acac2c02")]
 [assembly: System.Reflection.AssemblyProductAttribute("SunsOutBunsOut")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SunsOutBunsOut")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

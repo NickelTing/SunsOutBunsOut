@@ -43,7 +43,7 @@ const router = createBrowserRouter([
             action: editAction,
           },
           {
-            path: "burgers/:burgerId/destroy",
+            path: "burgers/:burgerid/destroy",
             action: destroyAction,
             errorElement: <div>Oops! There was an error.</div>
           },
