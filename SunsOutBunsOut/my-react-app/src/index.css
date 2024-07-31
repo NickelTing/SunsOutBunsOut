@@ -462,6 +462,10 @@ body.light-theme button:hover {
   background-color: #f0f0f0; /* Button hover state */
 }
 
+body.light-theme .no-underline-link {
+  color:#000000
+}
+
 /* Dark Theme */
 body.dark-theme {
   background-color: #333333;
@@ -483,10 +487,13 @@ body.dark-theme button:hover {
   background-color: #444444; /* Button hover state */
 }
 
+body.dark-theme .no-underline-link {
+  color:#ffffff
+}
+
 /* styles.css */
 .no-underline-link {
   text-decoration: none; /* Remove underline */
-  color: black; /* Change to your desired color */
 }
 
 .no-underline-link:hover {
