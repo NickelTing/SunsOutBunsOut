@@ -17,7 +17,7 @@ export async function createBurger(): Promise<Burger> {
   await fakeNetwork();
   let burgers = await getBurgers();
   let id = burgers.length + 1;
-  let burger: Burger = { id, IsGlutenFree: false, Price: 0 };
+  let burger: Burger = { id, isGlutenFree: false, price: 0 };
   burgers.push(burger);
   await set(burgers);
   return burger;

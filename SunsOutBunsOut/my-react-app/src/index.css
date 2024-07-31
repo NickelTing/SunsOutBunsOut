@@ -238,10 +238,6 @@ i {
   gap: 1rem;
 }
 
-#sidebar nav a:hover {
-  background: #e3e3e3;
-}
-
 #sidebar nav a.active {
   background: hsl(224, 98%, 58%);
   color: white;

@@ -19,9 +19,9 @@ CREATE TABLE Burger (
 GO
 
 INSERT INTO Burger (Name, Description, Image, Price, IsGlutenFree) VALUES
-('Classic Cheeseburger', 'A classic cheeseburger with lettuce, tomato, and pickles.', '', 10.00, 0),
-('Vegan Burger', 'A delicious vegan patty with avocado, lettuce, and tomato.', '', 12.00, 1),
-('BBQ Bacon Burger', 'A juicy burger topped with crispy bacon and BBQ sauce.', '', 15.00, 0);
+('Classic Cheeseburger', 'A classic cheeseburger with lettuce, tomato, and pickles.', '', 10, 0),
+('Vegan Burger', 'A delicious vegan patty with avocado, lettuce, and tomato.', '', 12, 1),
+('BBQ Bacon Burger', 'A juicy burger topped with crispy bacon and BBQ sauce.', '', 15, 0);
 GO
 
 SELECT * FROM Burger;

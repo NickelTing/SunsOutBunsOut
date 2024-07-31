@@ -1,5 +1,5 @@
 import { Form, useLoaderData, LoaderFunctionArgs  } from "react-router-dom";
-import { getBurger } from "../burger";
+import { getBurger } from "../Services/BurgerService";
 import type { Burger } from '../Models/Burgers';
 import burgerImage from '../assets/burger.png';
 
@@ -24,16 +24,14 @@ export async function loader({ params }: LoaderFunctionArgs) {
 // Define the Burger component
 export default function Burger() {
   const { burger } = useLoaderData() as LoaderData;
-  console.log(burger)
-
 
   return (
     <div id="burger">
       <div>
         <img
-          key={burger.Image}
+          key={burger.image}
           src={
-            burger.Image ||
+            burger.image ||
             burgerImage
           }
           alt="Burger Icon"
@@ -43,9 +41,9 @@ export default function Burger() {
 
       <div>
         <h1>
-          {burger.Name ? (
+          {burger.name ? (
             <>
-              {burger.Name}
+              {burger.name}
             </>
           ) : (
             <i>No Name</i>
@@ -53,14 +51,14 @@ export default function Burger() {
         </h1>
 
         <p>
-          {burger.Description ? burger.Description : "No Description"}
+          {burger.description ? burger.description : "No Description"}
         </p>
 
         <p>$ 
-          {burger.Price ? burger.Price : "No Description"}
+          {burger.price ? burger.price : 0}
         </p>
 
-        {burger.IsGlutenFree ? (
+        {burger.isGlutenFree ? (
           <span role="img" aria-label="Gluten Free" className="gluten-free">
             Gluten-Free <span className="green-tick">✔️</span>
           </span>

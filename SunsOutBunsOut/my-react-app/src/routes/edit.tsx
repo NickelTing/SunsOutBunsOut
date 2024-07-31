@@ -44,7 +44,7 @@ export default function EditBurger() {
 
 
   // Initialize local state for IsGlutenFree
-  const [isGlutenFree, setIsGlutenFree] = useState(burger.IsGlutenFree);
+  const [isGlutenFree, setIsGlutenFree] = useState(burger.isGlutenFree);
 
   // Handle the toggle button click
   const toggleGlutenFree = () => {
@@ -60,7 +60,7 @@ export default function EditBurger() {
           aria-label="Name"
           type="text"
           name="Name"
-          defaultValue={burger?.Name}
+          defaultValue={burger?.name}
         />
       </p>
       <label>
@@ -68,7 +68,7 @@ export default function EditBurger() {
         <textarea
             placeholder="Some Interesting Facts"
           name="Description"
-          defaultValue={burger?.Description}
+          defaultValue={burger?.description}
           rows={3}
         />
       </label>
@@ -79,7 +79,7 @@ export default function EditBurger() {
           aria-label="Price"
           type="text"
           name="Price"
-          defaultValue={burger?.Price}
+          defaultValue={burger?.price}
         />
       </label>
       <label>
@@ -89,7 +89,7 @@ export default function EditBurger() {
           aria-label="Image"
           type="text"
           name="Image"
-          defaultValue={burger?.Image}
+          defaultValue={burger?.image}
         />
       </label>
       <p>

@@ -10,7 +10,7 @@ import {
   LoaderFunctionArgs,
   useSubmit,
 } from "react-router-dom";
-import { getBurgers, createBurger } from "../burger";
+import { getBurgers, createBurger } from "../Services/BurgerService";
 import type { Burger } from '../Models/Burgers';
 import { useEffect } from "react";
 
@@ -91,7 +91,7 @@ export default function Root() {
         <nav>
           {burgers.length ? (
             <ul>
-              {burgers.map((burger: Burger) => (
+              {burgers.map((burger) => (
                 <li key={burger.id}>
                   <NavLink
                     to={`burgers/${burger.id}`}
@@ -104,9 +104,9 @@ export default function Root() {
                     }
                   >
                   <Link to={`burgers/${burger.id}`}>
-                    {burger.Name ? (
+                    {burger.name ? (
                       <>
-                        {burger.Name}
+                        {burger.name}
                       </>
                     ) : (
                       <i>No Burger</i>
