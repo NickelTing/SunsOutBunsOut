@@ -5,7 +5,7 @@ A Full Stack ASP.NET Core Project which manages online food (burgers) menu.
 Before starting the project, please make sure you have the following installed:
 - Dotnet (latest version)
 - SQL Server Management Studio (SSMS)
-- LocalDB (through the Visual Studio Installer, as part of the Data Storage and Processing workload, the ASP.NET and web development workload, or as an individual component.)
+- LocalDB (through the Visual Studio Installer, as part of the Data Storage and Processing workload, the ASP.NET and web development workload, or as an individual component, also run ***sqllocaldb start "MSSQLLocalDB"*** to create the local instance if haven't done so)
 
 Install the packages by running the commands below:
 - npm install vite
@@ -16,7 +16,7 @@ Install the packages by running the commands below:
 The data are retrieved and stored in a local MySQL database instance (I tried to use Azure SQL but I did not have a subscription to deploy one). A SQL script is included in this directory which you can use to create database and table and import sample data.
 
 ### Running SunsOutBunsOut (backend)
-Locate the SunsOutBunsOut folder by running **cd SunsOutBunsOut**, or right clicking the SunsOutBunsOut folder and select Open in Integrated Folder. Run **dotnet build** and then **dotnet run** to start the service.
+Locate the SunsOutBunsOut folder by running ***cd SunsOutBunsOut***, or right clicking the SunsOutBunsOut folder and select Open in Integrated Folder. Run **dotnet build** and then ***dotnet run*** to start the service.
 
 
 ### Running my-react-app
