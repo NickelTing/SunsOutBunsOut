@@ -12,6 +12,8 @@ import EditBurger, { action as editAction } from './routes/edit';
 import { action as destroyAction } from './routes/destroy';
 import Index from './routes/index';
 import { ThemeProvider, useTheme } from './ThemeContext'; // Import your ThemeProvider
+// Import BurgerMenu component
+import BurgerMenu from './routes/menu'; // Adjust the path as needed
 
 const router = createBrowserRouter([
   {
@@ -40,6 +42,10 @@ const router = createBrowserRouter([
             path: 'burgers/:burgerid/destroy',
             action: destroyAction,
             errorElement: <div>Oops! There was an error.</div>
+          },
+          {
+            path: 'menu',
+            element: <BurgerMenu />, // New route for BurgerMenu
           },
         ],
       },
