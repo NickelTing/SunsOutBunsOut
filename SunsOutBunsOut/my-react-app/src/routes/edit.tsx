@@ -72,6 +72,26 @@ export default function EditBurger() {
           rows={3}
         />
       </label>
+      <label>
+        <span>Price</span>
+        <input
+          placeholder="No Decimals"
+          aria-label="Price"
+          type="text"
+          name="Price"
+          defaultValue={burger?.Price}
+        />
+      </label>
+      <label>
+        <span>Image</span>
+        <input
+          placeholder="Image URL"
+          aria-label="Image"
+          type="text"
+          name="Image"
+          defaultValue={burger?.Image}
+        />
+      </label>
       <p>
         <span>Gluten-Free?</span>
         <button

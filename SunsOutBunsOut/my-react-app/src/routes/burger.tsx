@@ -1,6 +1,7 @@
 import { Form, useLoaderData, LoaderFunctionArgs  } from "react-router-dom";
 import { getBurger } from "../burger";
 import type { Burger } from '../Models/Burgers';
+import burgerImage from '../assets/burger.png';
 
 interface LoaderData {
   burger: Burger;
@@ -29,6 +30,18 @@ export default function Burger() {
   return (
     <div id="burger">
       <div>
+        <img
+          key={burger.Image}
+          src={
+            burger.Image ||
+            burgerImage
+          }
+          alt="Burger Icon"
+          style={{ height: '200px', width: 'auto' }} // Maintain aspect ratio
+        />
+      </div>
+
+      <div>
         <h1>
           {burger.Name ? (
             <>
@@ -41,6 +54,10 @@ export default function Burger() {
 
         <p>
           {burger.Description ? burger.Description : "No Description"}
+        </p>
+
+        <p>$ 
+          {burger.Price ? burger.Price : "No Description"}
         </p>
 
         {burger.IsGlutenFree ? (
