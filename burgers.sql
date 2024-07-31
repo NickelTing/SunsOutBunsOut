@@ -8,18 +8,22 @@ GO
 USE SunsOutBunsOut;
 GO
 
-CREATE TABLE Burgers (
+CREATE TABLE Burger (
     Id INT IDENTITY PRIMARY KEY,
-    Name VARCHAR(255) not null unique,
+    Name VARCHAR(255) NOT NULL unique,
+	Image VARCHAR(255) NULL,
     Description TEXT NULL,
-    IsGlutenFree BIT NULL,
+	Price INT NULL,
+    IsGlutenFree BIT NOT NULL,
 );
 GO
 
-INSERT INTO Burgers (Name, Description, IsGlutenFree) VALUES
-('Classic Cheeseburger', 'A classic cheeseburger with lettuce, tomato, and pickles.', 0),
-('Vegan Burger', 'A delicious vegan patty with avocado, lettuce, and tomato.', 1),
-('BBQ Bacon Burger', 'A juicy burger topped with crispy bacon and BBQ sauce.', 0);
+
+INSERT INTO Burger (Name, Description, Image, Price, IsGlutenFree) VALUES
+('Classic Cheeseburger', 'A classic cheeseburger with lettuce, tomato, and pickles.', '', 10, 0),
+('Vegan Burger', 'A delicious vegan patty with avocado, lettuce, and tomato.', '', 12, 1),
+('BBQ Bacon Burger', 'A juicy burger topped with crispy bacon and BBQ sauce.', '', 15, 0);
 GO
 
-SELECT * FROM Burgers;
+SELECT * FROM Burger;
+GO
