@@ -53,7 +53,7 @@ export default function EditBurger() {
 
   return (
     <Form method="post" id="burger-form">
-      <p>
+      <label>
         <span>Name</span>
         <input
           placeholder="Burger Name"
@@ -62,14 +62,14 @@ export default function EditBurger() {
           name="Name"
           defaultValue={burger?.name}
         />
-      </p>
+      </label>
       <label>
-        <span>Description</span>
+        <span>Note</span>
         <textarea
             placeholder="Some Interesting Facts"
           name="Description"
           defaultValue={burger?.description}
-          rows={3}
+          rows={6}
         />
       </label>
       <label>
@@ -93,14 +93,14 @@ export default function EditBurger() {
         />
       </label>
       <p>
-        <span>Gluten-Free?</span>
+        <span>GF</span>
         <button
           type="button"
           name="IsGlutenFree"
           onClick={toggleGlutenFree}
           className={`gluten-free-btn ${isGlutenFree ? 'gluten-free' : 'not-gluten-free'}`}
         >
-          {isGlutenFree ? "✔️" : "❌"}
+          {isGlutenFree ? <span className="green-tick">&#10004;</span> : <span className="tick red-tick">&#10008;</span>}
         </button>
         {/* Hidden input field to submit the gluten-free state */}
         <input type="hidden" name="IsGlutenFree" value={isGlutenFree ? "true" : "false"} />

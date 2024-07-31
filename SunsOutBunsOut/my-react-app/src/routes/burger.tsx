@@ -60,11 +60,11 @@ export default function Burger() {
 
         {burger.isGlutenFree ? (
           <span role="img" aria-label="Gluten Free" className="gluten-free">
-            Gluten-Free <span className="green-tick">✔️</span>
+            Gluten-Free <span className="green-tick">&#10004;</span>
           </span>
         ) : (
           <span role="img" aria-label="Not Gluten Free" className="not-gluten-free">
-            Gluten-Free ❌
+            Gluten-Free <span className="tick red-tick">&#10008;</span>
           </span>
         )}
 

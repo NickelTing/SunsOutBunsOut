@@ -1,13 +1,12 @@
+import burgerImage from '../assets/burger.png';
+
 export default function Index() {
     return (
-      <p id="zero-state">
-        This is a demo for React Router.
-        <br />
-        Check out{" "}
-        <a href="https://reactrouter.com">
-          the docs at reactrouter.com
-        </a>
-        .
-      </p>
+      <h1 id="zero-state">
+          <img src={burgerImage} alt="Burger Icon" style={{ height: '150px', width: 'auto' }} // Maintain aspect ratio
+          />
+        <br></br>
+        SunsOutBunsOut
+      </h1>
     );
   }
