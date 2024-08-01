@@ -1,5 +1,5 @@
 # SunsOutBunsOut
-A Full Stack ASP.NET Core Project which manages online food (burgers) menu.
+A Full Stack ASP.NET Core Project which manages online menu about burgers.
 
 ### Prerequisite and Packages
 Before starting the project, please make sure you have the following installed:
@@ -19,8 +19,20 @@ The data are retrieved and stored in a local MySQL database instance (I tried to
 ### Running SunsOutBunsOut (backend)
 Locate the SunsOutBunsOut folder by running ***cd SunsOutBunsOut***, or right clicking the SunsOutBunsOut folder and select Open in Integrated Folder. Run **dotnet build** and then ***dotnet run*** to start the service.
 
-
 ### Running my-react-app (frontend)
-Locate the my-react-app folder by running **cd SunsOutBunsOut/my-react-app**, or right clicking the my-react-app folder and select Open in Integrated Folder. Run **npm run dev** to run the project.
-
+Locate the my-react-app folder by running ***cd SunsOutBunsOut/my-react-app*** or right clicking the my-react-app folder and select Open in Integrated Folder. Run ***npm run dev*** to run the project.
 (Note: This app does not use any specific styling library because a student ambassador in the discord servers says it is okay as long as it is visually appealling).
+
+### About my project
+One thing about my project I are very proud of is the feature of managing the burgers without accessing the code. The user does not require the knowledge of TypeScript and C# to carry out CRUD operations on the burgers. The user only need to press buttons and enter new values, and the menu (which is intended for customer viewing) will display the updated burgers.
+
+Basic features of the web application includes:
+- Creating a burger
+- Read a burger
+- Searching a burger
+- Editing a burger
+- Deleting a burger
+
+Advanced features of the web application includes:
+- Dark/Light mode
+- Dynamic menu

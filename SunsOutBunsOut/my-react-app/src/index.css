@@ -491,7 +491,7 @@ body.dark-theme .no-underline-link {
   color:#ffffff
 }
 
-body.dark -theme form[action$="destroy"] button {
+body.dark-theme form[action$="destroy"] button {
   color: #f44250;
 }
 
