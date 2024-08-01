@@ -80,10 +80,6 @@ button:active {
   color: #eeb004;
 }
 
-form[action$="destroy"] button {
-  color: #f44250;
-}
-
 .gluten-free-btn {
   padding: 10px 20px;
   font-size: 16px;
@@ -466,6 +462,10 @@ body.light-theme .no-underline-link {
   color:#000000
 }
 
+body.light-theme form[action$="destroy"] button {
+  color: #f44250;
+}
+
 /* Dark Theme */
 body.dark-theme {
   background-color: #333333;
@@ -489,6 +489,10 @@ body.dark-theme button:hover {
 
 body.dark-theme .no-underline-link {
   color:#ffffff
+}
+
+body.dark -theme form[action$="destroy"] button {
+  color: #f44250;
 }
 
 /* styles.css */
