@@ -4,6 +4,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from 'react-router-dom';
+import { MantineProvider } from '@mantine/core'; // Import MantineProvider
 import './index.css';
 import Root, { loader as rootLoader, action as rootAction } from './routes/root';
 import ErrorPage from './routes/error-page';
@@ -12,7 +13,6 @@ import EditBurger, { action as editAction } from './routes/edit';
 import { action as destroyAction } from './routes/destroy';
 import Index from './routes/index';
 import { ThemeProvider, useTheme } from './ThemeContext'; // Import your ThemeProvider
-// Import BurgerMenu component
 import BurgerMenu from './routes/menu'; // Adjust the path as needed
 
 const router = createBrowserRouter([
@@ -60,7 +60,11 @@ const App: React.FC = () => {
     document.body.className = `${theme}-theme`;
   }, [theme]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <MantineProvider>
+      <RouterProvider router={router} />
+    </MantineProvider>
+  );
 };
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

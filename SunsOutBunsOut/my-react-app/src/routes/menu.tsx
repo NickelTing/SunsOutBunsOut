@@ -4,6 +4,7 @@ import { getBurgers } from '../Services/BurgerService'; // Adjust the import pat
 import type { Burger } from '../Models/Burgers';
 import { useTheme } from '../ThemeContext'; // Import the theme context
 import burgerImage from '../assets/burger.png';
+import { Button, Loader, Container, Title, Text, Image, Group } from '@mantine/core';
 
 const BurgerMenu: React.FC = () => {
   const [burgers, setBurgers] = useState<Burger[]>([]);
@@ -35,51 +36,49 @@ const BurgerMenu: React.FC = () => {
     toggleTheme(); // Toggle between light and dark theme
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) return <Loader variant="dots" />;
+  if (error) return <Text color="red">{error}</Text>;
 
   return (
-    <div className={`burger-menu ${theme}-theme`}>
-      <div>
-        <button onClick={handleBackClick}>Back</button>
-        <button onClick={handleThemeToggle}>
+    <Container className={`burger-menu ${theme}-theme`} size="md">
+      <Group  mb="md">
+        <Button onClick={handleBackClick}>Back</Button>
+        <Button onClick={handleThemeToggle}>
           {theme === 'light' ? 'Dark' : 'Light'}
-        </button>
-      </div>
-      <br></br>
-      <h1 className="stylish">
-          <img src={burgerImage} alt="Burger Icon" style={{ height: '150px', width: 'auto' }} // Maintain aspect ratio
-          />
-        <br></br>
+        </Button>
+      </Group>
+      <Title order={1}  mb="md" className='stylish'>
+        <Image src={burgerImage} alt="Burger Icon" height={150} fit="contain" />
+        <br />
         SunsOutBunsOut
-      </h1>
+      </Title>
+      <br />
       <ul>
         {burgers.length ? (
           burgers.map((burger) => (
             <li key={burger.id}>
-              <h2 className="stylish">{burger.name}</h2>
-              <p className="stylish">{burger.description}</p>
-              <p className="stylish">${burger.price.toFixed(2)}</p>
-              {burger.image && <img src={burger.image} alt={burger.name} />}
-              <p className='stylish'>
+              <Title order={2} className='stylish'>{burger.name}</Title>
+              <Text className='stylish'>{burger.description}</Text>
+              <Text className='stylish'>${burger.price.toFixed(2)}</Text>
+              {burger.image && <Image src={burger.image} alt={burger.name} />}
+              <Text className='stylish' color={burger.isGlutenFree ? 'green' : 'red'}>
                 {burger.isGlutenFree ? (
-                  <span role="img" aria-label="Gluten Free" className="gluten-free">
-                      Gluten-Free <span className="green-tick">&#10004;</span>
-                    </span>
-                  ) : (
-                  <span role="img" aria-label="Not Gluten Free" className="not-gluten-free">
-                      Gluten-Free <span className="tick red-tick">&#10008;</span>
-                  </span>
+                  <>
+                    Gluten-Free <span role="img" className='green-tick'  aria-label="Gluten Free">&#10004;</span>
+                  </>
+                ) : (
+                  <>
+                    Gluten-Free <span role="img" className='red-tick' aria-label="Not Gluten Free">&#10008;</span>
+                  </>
                 )}
-              </p>
-              <br></br>
+              </Text>
             </li>
           ))
         ) : (
-          <p>No burgers available.</p>
+          <Text>No burgers available.</Text>
         )}
       </ul>
-    </div>
+    </Container>
   );
 };
 

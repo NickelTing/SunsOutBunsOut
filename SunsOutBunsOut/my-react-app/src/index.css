@@ -117,7 +117,7 @@ button:active {
   display: flex;
   flex-direction: column;
   transition: width 0.3s ease;
-  width: 250px
+  width: 250px;
 }
 
 #sidebar > * {
@@ -495,6 +495,12 @@ body.dark-theme form[action$="destroy"] button {
   color: #f44250;
 }
 
+body.dark-theme input,
+body.dark-theme textarea {
+  background-color: #444444;
+  color: #eeeeee;
+}
+
 /* styles.css */
 .no-underline-link {
   text-decoration: none; /* Remove underline */
@@ -545,7 +551,6 @@ body.dark-theme form[action$="destroy"] button {
 .stylish {
   font-family: 'Pacifico', cursive;
 }
-
 
 /* Media Queries for Mobile Devices */
 @media (max-width: 768px) {
