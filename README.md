@@ -23,4 +23,4 @@ Locate the SunsOutBunsOut folder by running ***cd SunsOutBunsOut***, or right cl
 ### Running my-react-app (frontend)
 Locate the my-react-app folder by running **cd SunsOutBunsOut/my-react-app**, or right clicking the my-react-app folder and select Open in Integrated Folder. Run **npm run dev** to run the project.
 
-(Note: This app does not use any specific CSS styling library because a student ambassador in the discord servers says it is okay as long as it is visually appealling).
+(Note: This app does not use any specific styling library because a student ambassador in the discord servers says it is okay as long as it is visually appealling).
