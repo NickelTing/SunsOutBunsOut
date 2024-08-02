@@ -6,13 +6,17 @@ Before starting the project, please make sure you have the following installed:
 - Dotnet (latest version)
 - SQL Server Management Studio (SSMS)
 - LocalDB (through the Visual Studio Installer, as part of the Data Storage and Processing workload, the ASP.NET and web development workload, or as an individual component. Run ***sqllocaldb start "MSSQLLocalDB"*** in command prompt to create the local instance if haven't done so)
-- Node.js 
+- Node.js
 
 Install the packages by running the commands below:
 - npm install vite
 - npm install react-router-dom
 - npm install localforage match-sorter sort-by
 - npm install npm install @mantine/core @mantine/hooks
+- dotnet add package xunit
+- dotnet add package xunit.runner.visualstudio
+- dotnet add package Moq
+- npm install --save-dev jest @types/jest ts-jest (create a jest configuration file by running ***npx ts-jest config:init***)
 
 ### Database
 The data are retrieved and stored in a local MySQL database instance (I tried to use Azure SQL but I did not have a subscription to deploy one). A SQL script is included in this directory which you can use to create database and table and import sample data.
