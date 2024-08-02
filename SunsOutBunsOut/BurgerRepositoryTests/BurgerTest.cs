@@ -23,7 +23,7 @@ namespace BurgerRepositoryTests
         [Fact]
         public async Task GetAllBurgersAsync_ReturnsAllBurgers()
         {
-            // Arrange
+            // Add two burgers
             using (var context = CreateContext())
             {
                 context.Burger.AddRange(
@@ -37,10 +37,10 @@ namespace BurgerRepositoryTests
             {
                 var repository = new BurgerRepository(context);
 
-                // Act
+                // Run the repository
                 var burgers = await repository.GetAllBurgersAsync();
 
-                // Assert
+                // Assert 2 burgers in the database
                 Assert.Equal(2, burgers.Count());
             }
         }
@@ -48,7 +48,7 @@ namespace BurgerRepositoryTests
         [Fact]
         public async Task GetBurgerByIdAsync_ReturnsCorrectBurger()
         {
-            // Arrange
+            // Add a Cheeseburger
             using (var context = CreateContext())
             {
                 context.Burger.Add(new Burger { Id = 1, Name = "Cheeseburger" });
@@ -59,10 +59,10 @@ namespace BurgerRepositoryTests
             {
                 var repository = new BurgerRepository(context);
 
-                // Act
+                // Find the burger with id 1
                 var burger = await repository.GetBurgerByIdAsync(1);
 
-                // Assert
+                // Assert 1 burger with the name Cheeseburger 
                 Assert.NotNull(burger);
                 Assert.Equal(1, burger.Id);
                 Assert.Equal("Cheeseburger", burger.Name);
@@ -72,16 +72,16 @@ namespace BurgerRepositoryTests
         [Fact]
         public async Task AddBurgerAsync_AddsBurger()
         {
-            // Arrange
+            // Prepare a burger
             using (var context = CreateContext())
             {
                 var repository = new BurgerRepository(context);
                 var burger = new Burger { Id = 1, Name = "Cheeseburger" };
 
-                // Act
+                // Add the burger
                 await repository.AddBurgerAsync(burger);
 
-                // Assert
+                // Assert one burger in the database with the name Cheeseburger
                 Assert.Equal(1, context.Burger.Count());
                 Assert.Equal("Cheeseburger", context.Burger.Single().Name);
             }
@@ -90,7 +90,7 @@ namespace BurgerRepositoryTests
         [Fact]
         public async Task UpdateBurgerAsync_UpdatesBurger()
         {
-            // Arrange
+            // Add a burger called Cheeseburger
             using (var context = CreateContext())
             {
                 context.Burger.Add(new Burger { Id = 1, Name = "Cheeseburger" });
@@ -103,10 +103,10 @@ namespace BurgerRepositoryTests
                 var burger = await repository.GetBurgerByIdAsync(1);
                 burger.Name = "Bacon Cheeseburger";
 
-                // Act
+                // Update the burger to Bacon Cheeseburger
                 await repository.UpdateBurgerAsync(burger);
 
-                // Assert
+                // Assert the burger as Bacon Cheeseburger
                 var updatedBurger = context.Burger.Single();
                 Assert.Equal("Bacon Cheeseburger", updatedBurger.Name);
             }
@@ -115,7 +115,7 @@ namespace BurgerRepositoryTests
         [Fact]
         public async Task DeleteBurgerAsync_DeletesBurger()
         {
-            // Arrange
+            // Add a new burger 
             using (var context = CreateContext())
             {
                 context.Burger.Add(new Burger { Id = 1, Name = "Cheeseburger" });
@@ -126,10 +126,10 @@ namespace BurgerRepositoryTests
             {
                 var repository = new BurgerRepository(context);
 
-                // Act
+                // Delete the burger
                 await repository.DeleteBurgerAsync(1);
 
-                // Assert
+                // Assert no burger in the database
                 Assert.Empty(context.Burger);
             }
         }
@@ -137,7 +137,7 @@ namespace BurgerRepositoryTests
         [Fact]
         public async Task BurgerExistsAsync_ReturnsCorrectly()
         {
-            // Arrange
+            // Add a Cheeseburger
             using (var context = CreateContext())
             {
                 context.Burger.Add(new Burger { Id = 1, Name = "Cheeseburger" });
@@ -148,11 +148,11 @@ namespace BurgerRepositoryTests
             {
                 var repository = new BurgerRepository(context);
 
-                // Act
+                // Check if the burgers exist
                 var exists = await repository.BurgerExistsAsync(1);
                 var notExists = await repository.BurgerExistsAsync(2);
 
-                // Assert
+                // Assert there is burger with id 1 but not with id 2
                 Assert.True(exists);
                 Assert.False(notExists);
             }
@@ -161,7 +161,7 @@ namespace BurgerRepositoryTests
         [Fact]
         public async Task BulkAddBurgersAsync_AddsBurgers()
         {
-            // Arrange
+            // Prepare two burgers
             using (var context = CreateContext())
             {
                 var repository = new BurgerRepository(context);
@@ -171,10 +171,10 @@ namespace BurgerRepositoryTests
                     new Burger { Id = 2, Name = "Veggie Burger" }
                 };
 
-                // Act
+                // Add two new burgers at the same time
                 await repository.BulkAddBurgersAsync(burgers);
 
-                // Assert
+                // Assert two burgers in the database
                 Assert.Equal(2, context.Burger.Count());
             }
         }
