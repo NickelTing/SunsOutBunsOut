@@ -24,10 +24,10 @@ Install the packages by running the commands below:
 The data are retrieved and stored in a local MySQL database instance (I tried to use Azure SQL but I did not have a subscription to deploy one). A SQL script is included in this directory which you can use to create database and table and import sample data.
 
 ### Running SunsOutBunsOut (backend)
-Locate the SunsOutBunsOut folder by running ***cd SunsOutBunsOut***, or right clicking the SunsOutBunsOut folder and select Open in Integrated Folder. Run ***dotnet build*** and then ***dotnet run*** to start the service.
+Locate the SunsOutBunsOut folder by running ***cd SunsOutBunsOut***, or right clicking the SunsOutBunsOut folder and select Open in Integrated Folder if using Visual Studio Code. Run ***dotnet build*** and then ***dotnet run*** to start the service.
 
 ### Running my-react-app (frontend)
-Locate the my-react-app folder by running ***cd SunsOutBunsOut/my-react-app***, or right clicking the my-react-app folder and select Open in Integrated Folder. Run ***npm run dev*** to run the project.
+Locate the my-react-app folder by running ***cd SunsOutBunsOut/my-react-app***, or right clicking the my-react-app folder and select Open in Integrated Folder if using Visual Studio Code. Run ***npm run dev*** to run the project.
 
 ### About my project
 One thing about my project I are very proud of is the feature of managing the burgers without accessing the code. The user does not require the knowledge of TypeScript and C# to carry out CRUD operations on the burgers. The user only need to press buttons and enter new values, and the menu (which is intended for customer viewing) will display the updated burgers.
@@ -42,3 +42,8 @@ Basic features of the web application includes:
 Advanced features of the web application includes:
 - Dark/Light mode
 - Dynamic menu
+
+### Unit Testing
+Unit testing of the project is carried out through Xunit which tests the repositories. To run the testing, locate the SunsOutBunsOut folder and run ***dotnet test***. All repositories were expected to pass the test.
+
+### Docker containerization
