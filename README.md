@@ -13,10 +13,11 @@ Install the packages by running the commands below:
 - npm install react-router-dom
 - npm install localforage match-sorter sort-by
 - npm install npm install @mantine/core @mantine/hooks
+
+- npm install --save-dev jest @types/jest ts-jest (create a jest configuration file by running ***npx ts-jest config:init***)
 - dotnet add package xunit
 - dotnet add package xunit.runner.visualstudio
 - dotnet add package Moq
-- npm install --save-dev jest @types/jest ts-jest (create a jest configuration file by running ***npx ts-jest config:init***)
 
 ### Database
 The data are retrieved and stored in a local MySQL database instance (I tried to use Azure SQL but I did not have a subscription to deploy one). A SQL script is included in this directory which you can use to create database and table and import sample data.
