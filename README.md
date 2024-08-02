@@ -44,6 +44,6 @@ Advanced features of the web application includes:
 - Dynamic menu
 
 ### Unit Testing
-Unit testing of the project is carried out through Xunit which tests the repositories. To run the testing, locate the SunsOutBunsOut folder and run ***dotnet test***. All repositories were expected to pass the test.
+Unit testing for the project is conducted using xUnit. These tests ensure that the interactions between the database and the web application function as expected. To run the testing, locate the SunsOutBunsOut folder and run ***dotnet test***. All repositories were expected to pass the test.
 
 ### Docker containerization
