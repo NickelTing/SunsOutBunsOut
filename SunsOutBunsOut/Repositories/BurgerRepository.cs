@@ -19,8 +19,14 @@ namespace Repositories
 
         public async Task<Burger> GetBurgerByIdAsync(int id)
         {
-            return await _context.Burger.FindAsync(id);
+            var burger = await _context.Burger.FindAsync(id);
+            if (burger == null)
+            {
+                throw new InvalidOperationException($"Burger with ID {id} not found.");
+            }
+            return burger;
         }
+
 
         public async Task AddBurgerAsync(Burger Burger)
         {

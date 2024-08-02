@@ -17,6 +17,8 @@ Install the packages by running the commands below:
 - dotnet add package xunit
 - dotnet add package xunit.runner.visualstudio
 - dotnet add package Moq
+- dotnet add package Newtonsoft.Json --version 13.0.1
+- dotnet add package Microsoft.NET.Test.Sdk --version 17.4.1
 
 ### Database
 The data are retrieved and stored in a local MySQL database instance (I tried to use Azure SQL but I did not have a subscription to deploy one). A SQL script is included in this directory which you can use to create database and table and import sample data.

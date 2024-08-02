@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nicky\\OneDrive - University of Canterbury\\Documents\\GitHub\\SunsOutBunsOut\\SunsOutBunsOut\\SunsOutBunsOut.csproj": {}
+    "C:\\Users\\nicky\\OneDrive - University of Canterbury\\Documents\\GitHub\\SunsOutBunsOut\\SunsOutBunsOUt\\SunsOutBunsOut.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nicky\\OneDrive - University of Canterbury\\Documents\\GitHub\\SunsOutBunsOut\\SunsOutBunsOut\\SunsOutBunsOut.csproj": {
+    "C:\\Users\\nicky\\OneDrive - University of Canterbury\\Documents\\GitHub\\SunsOutBunsOut\\SunsOutBunsOUt\\SunsOutBunsOut.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nicky\\OneDrive - University of Canterbury\\Documents\\GitHub\\SunsOutBunsOut\\SunsOutBunsOut\\SunsOutBunsOut.csproj",
+        "projectUniqueName": "C:\\Users\\nicky\\OneDrive - University of Canterbury\\Documents\\GitHub\\SunsOutBunsOut\\SunsOutBunsOUt\\SunsOutBunsOut.csproj",
         "projectName": "SunsOutBunsOut",
-        "projectPath": "C:\\Users\\nicky\\OneDrive - University of Canterbury\\Documents\\GitHub\\SunsOutBunsOut\\SunsOutBunsOut\\SunsOutBunsOut.csproj",
+        "projectPath": "C:\\Users\\nicky\\OneDrive - University of Canterbury\\Documents\\GitHub\\SunsOutBunsOut\\SunsOutBunsOUt\\SunsOutBunsOut.csproj",
         "packagesPath": "C:\\Users\\nicky\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nicky\\OneDrive - University of Canterbury\\Documents\\GitHub\\SunsOutBunsOut\\SunsOutBunsOut\\obj\\",
+        "outputPath": "C:\\Users\\nicky\\OneDrive - University of Canterbury\\Documents\\GitHub\\SunsOutBunsOut\\SunsOutBunsOUt\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -74,9 +74,17 @@
               "target": "Package",
               "version": "[8.0.7, )"
             },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.4.1, )"
+            },
             "Moq": {
               "target": "Package",
               "version": "[4.20.70, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
