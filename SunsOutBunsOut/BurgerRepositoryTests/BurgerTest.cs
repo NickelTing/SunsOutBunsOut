@@ -179,6 +179,7 @@ namespace BurgerRepositoryTests
             }
         }
 
+        // Delete records
         public void Dispose()
         {
             _context.Database.EnsureDeleted();
