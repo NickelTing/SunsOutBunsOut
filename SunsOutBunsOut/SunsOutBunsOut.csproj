@@ -32,9 +32,9 @@
   <Target Name="CopyAppHost" AfterTargets="Build">
     <PropertyGroup>
       <AppHostSource>$(IntermediateOutputPath)apphost</AppHostSource>
-      <AppHostDestination>$(OutputPath)</AppHostDestination>
+      <AppHostDestination>$(OutputPath)apphost</AppHostDestination>
     </PropertyGroup>
-    <Copy SourceFiles="$(AppHostSource)" DestinationFolder="$(AppHostDestination)" />
+    <Copy SourceFiles="$(AppHostSource)" DestinationFiles="$(AppHostDestination)" />
   </Target>
 
 </Project>
