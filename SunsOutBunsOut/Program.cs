@@ -32,9 +32,9 @@ if (useSqlServer)
     {
         // Log the failure and fall back to in-memory database
         Console.WriteLine($"SQL Server connection failed: {ex.Message}");
-
         builder.Services.AddDbContext<BurgerContext>(options =>
             options.UseInMemoryDatabase("Burger"));
+        Console.WriteLine($"Using InMemory Database");
     }
 }
 else
