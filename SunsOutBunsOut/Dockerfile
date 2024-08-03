@@ -1,11 +1,27 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0
+# Use the official .NET SDK image as the base image
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+
+# Set the working directory
 WORKDIR /SunsOutBunsOut
-COPY ["SunsOutBunsOut.csproj", "SunsOutBunsOut/"]
-RUN dotnet restore "SunsOutBunsOut/SunsOutBunsOut.csproj"
+
+# Copy the project file and restore dependencies
+COPY ["SunsOutBunsOut.csproj", "./"]
+RUN dotnet restore
+
+# Copy the rest of the application source code
 COPY . .
-WORKDIR "/SunsOutBunsOut"
-RUN dotnet build "SunsOutBunsOut.csproj" -c Release -o /app
-RUN dotnet publish "SunsOutBunsOut.csproj" -c Release -o /app
-EXPOSE 80
+
+# Build the application
+RUN dotnet build -c Release -o /app
+
+# Publish the application
+RUN dotnet publish -c Release -o /app
+
+# Set the working directory to the published output
 WORKDIR /app
+
+# Expose the port on which the app will run
+EXPOSE 80
+
+# Specify the entry point for the container
 ENTRYPOINT ["dotnet", "SunsOutBunsOut.dll"]
