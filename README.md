@@ -12,7 +12,7 @@ Before starting the project, please make sure you have the following installed:
 The data are retrieved and stored in a local MySQL database instance (I tried to use Azure SQL but I did not have a subscription to deploy one). A SQL script is included in this directory which you can use to create database and table and import sample data.
 
 ### Building and running SunsOutBunsOut (backend)
-Locate the SunsOutBunsOut folder by running ***cd SunsOutBunsOut***, or right clicking the SunsOutBunsOut folder and select Open in Integrated Folder if using Visual Studio Code. 
+Locate the SunsOutBunsOut (which is meant to be src) folder by running ***cd SunsOutBunsOut***, or right clicking the SunsOutBunsOut folder and select Open in Integrated Folder if using Visual Studio Code. 
 
 Install the following packages by running the commands below:
 - dotnet add package xunit
