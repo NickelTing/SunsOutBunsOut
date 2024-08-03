@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "W3LvhSlq15I=",
+  "dgSpecHash": "+xCw1d8OVC8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\nicky\\OneDrive - University of Canterbury\\Documents\\GitHub\\SunsOutBunsOut\\SunsOutBunsOUt\\SunsOutBunsOut.csproj",
+  "projectFilePath": "C:\\Users\\nicky\\OneDrive - University of Canterbury\\Documents\\GitHub\\SunsOutBunsOut\\SunsOutBunsOut\\SunsOutBunsOut.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nicky\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\nicky\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

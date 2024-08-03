@@ -13,7 +13,6 @@ Install the packages by running the commands below:
 - npm install react-router-dom
 - npm install localforage match-sorter sort-by
 - npm install @mantine/core @mantine/hooks
-- npm install --save-dev jest @types/jest ts-jest
 - dotnet add package xunit
 - dotnet add package xunit.runner.visualstudio
 - dotnet add package Moq
