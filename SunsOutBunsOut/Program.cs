@@ -6,22 +6,22 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 
-// Configure DbContext before building the app
-if (builder.Environment.IsDevelopment())
-{
-    builder.Services.AddDbContext<BurgerContext>(options =>
-        options.UseInMemoryDatabase("Burger"));
-}
-else
-{
-    // Configure DbContext with connection string
-    builder.Services.AddDbContext<BurgerContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("BurgerContext") ?? throw new InvalidOperationException("Connection string 'BurgerContext' not found.")));
-}
+// // Configure DbContext before building the app
+// if (builder.Environment.IsDevelopment())
+// {
+//     builder.Services.AddDbContext<BurgerContext>(options =>
+//         options.UseInMemoryDatabase("Burger"));
+// }
+// else
+// {
+//     // Configure DbContext with connection string
+//     builder.Services.AddDbContext<BurgerContext>(options =>
+//         options.UseSqlServer(builder.Configuration.GetConnectionString("BurgerContext") ?? throw new InvalidOperationException("Connection string 'BurgerContext' not found.")));
+// }
 
-// // Configure DbContext with connection string
-// builder.Services.AddDbContext<BurgerContext>(options =>
-//     options.UseSqlServer(builder.Configuration.GetConnectionString("BurgerContext") ?? throw new InvalidOperationException("Connection string 'BurgerContext' not found.")));
+// Configure DbContext with connection string
+builder.Services.AddDbContext<BurgerContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("BurgerContext") ?? throw new InvalidOperationException("Connection string 'BurgerContext' not found.")));
 
 
 
