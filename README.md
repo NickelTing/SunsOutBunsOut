@@ -7,6 +7,7 @@ Before starting the project, please make sure you have the following installed:
 - SQL Server Management Studio (SSMS)
 - LocalDB (through the Visual Studio Installer, as part of the Data Storage and Processing workload, the ASP.NET and web development workload, or as an individual component. Run ***sqllocaldb start "MSSQLLocalDB"*** in command prompt to create the local instance if haven't done so)
 - Node.js
+- Docker Desktop
 
 ### Database
 The data are retrieved and stored in a local MySQL database instance (I tried to use Azure SQL but I did not have a subscription to deploy one). A SQL script is included in this directory which you can use to create database and table and import sample data.
@@ -52,3 +53,4 @@ Advanced features of the web application includes:
 Unit testing for the project is conducted using xUnit. These tests ensure that the interactions between the database and the web application function as expected. To run the testing, locate the SunsOutBunsOut folder and run ***dotnet test***. All repositories were expected to pass the test.
 
 ### Docker containerization
+This project can be containerized in Docker. Run ***docker build -t sunsoutbunsout .*** to build a local docker image.
