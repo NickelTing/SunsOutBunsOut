@@ -1,8 +1,8 @@
-# Use the official .NET SDK image as the base image
+# Use the official .NET SDK image as the base image for building
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
 # Set the working directory
-WORKDIR /SunsOutBunsOut
+WORKDIR /app
 
 # Copy the project file and restore dependencies
 COPY ["SunsOutBunsOut.csproj", "./"]
@@ -12,13 +12,22 @@ RUN dotnet restore
 COPY . .
 
 # Build the application
-RUN dotnet build -c Release -o /app
+RUN dotnet build -c Release -o /app/build
 
 # Publish the application
-RUN dotnet publish -c Release -o /app
+RUN dotnet publish -c Release -o /app/publish
 
-# Set the working directory to the published output
+# Use the official .NET runtime image as the base image for the final image
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+
+# Set the working directory
 WORKDIR /app
+
+# Copy the published output from the build stage
+COPY --from=build /app/publish .
+
+# Set the environment to Development
+ENV ASPNETCORE_ENVIRONMENT=Development
 
 # Expose the port on which the app will run
 EXPOSE 80
