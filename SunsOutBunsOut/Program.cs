@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 var connectionString = builder.Configuration.GetConnectionString("BurgerContext");
 var useSqlServer = !string.IsNullOrEmpty(connectionString);
 
-Console.WriteLine($"{useSqlServer}");
+
 if (useSqlServer)
 {
     try
