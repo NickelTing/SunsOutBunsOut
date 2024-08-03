@@ -53,4 +53,4 @@ Advanced features of the web application includes:
 Unit testing for the project is conducted using xUnit. These tests ensure that the interactions between the database and the web application function as expected. To run the testing, locate the SunsOutBunsOut folder and run ***dotnet test***. All repositories were expected to pass the test.
 
 ### Docker containerization
-This project can be containerized in Docker. Run ***docker build -t sunsoutbunsout .*** to build a local docker image.
+This project can be containerized in Docker. Run ***docker build -t sunsoutbunsout .*** to build a local docker image. Run ***docker run -p 8080:80 sunsoutbunsout*** to run the docker container.

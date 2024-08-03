@@ -6,24 +6,44 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 
-// Configure DbContext before building the app
-if (builder.Environment.IsDevelopment())
+// Check if a connection string is provided
+var connectionString = builder.Configuration.GetConnectionString("BurgerContext");
+var useSqlServer = !string.IsNullOrEmpty(connectionString);
+
+Console.WriteLine($"{useSqlServer}");
+if (useSqlServer)
 {
-    builder.Services.AddDbContext<BurgerContext>(options =>
-        options.UseInMemoryDatabase("Burger"));
+    try
+    {
+        // Create a temporary DbContext to test the SQL Server connection
+        var optionsBuilder = new DbContextOptionsBuilder<BurgerContext>()
+            .UseSqlServer(connectionString);
+
+        using (var tempContext = new BurgerContext(optionsBuilder.Options))
+        {
+            tempContext.Database.OpenConnection();
+        }
+
+        // Configure DbContext to use SQL Server
+        builder.Services.AddDbContext<BurgerContext>(options =>
+            options.UseSqlServer(connectionString));
+    }
+    catch (Exception ex)
+    {
+        // Log the failure and fall back to in-memory database
+        Console.WriteLine($"SQL Server connection failed: {ex.Message}");
+
+        builder.Services.AddDbContext<BurgerContext>(options =>
+            options.UseInMemoryDatabase("Burger"));
+    }
 }
 else
 {
-    // Configure DbContext with connection string
+    // Fall back to in-memory database if no connection string is provided
+    Console.WriteLine($"Using InMemory Database");
     builder.Services.AddDbContext<BurgerContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("BurgerContext") ?? throw new InvalidOperationException("Connection string 'BurgerContext' not found.")));
+        options.UseInMemoryDatabase("Burger"));
 }
-
-// // Configure DbContext with connection string
-// builder.Services.AddDbContext<BurgerContext>(options =>
-//     options.UseSqlServer(builder.Configuration.GetConnectionString("BurgerContext") ?? throw new InvalidOperationException("Connection string 'BurgerContext' not found.")));
-
-
 
 // Dependency Injection
 builder.Services.AddScoped<IBurgerRepository, BurgerRepository>();
@@ -34,44 +54,18 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         policy =>
         {
-            // please change your localhost here
+            // Change your localhost URL here
             policy.WithOrigins("http://localhost:5173")
                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });
 });
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+// Configure Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
-// Check if the database is connected successfully
-using (var scope = app.Services.CreateScope())
-{
-    var dbContext = scope.ServiceProvider.GetRequiredService<BurgerContext>();
-    try
-    {
-        dbContext.Database.OpenConnection();
-        Console.WriteLine("Database connection successful!");
-
-        // Example query to test the database
-        var testQuery = "SELECT COUNT(*) FROM Burger"; // Replace with your table name
-        using (var command = dbContext.Database.GetDbConnection().CreateCommand())
-        {
-            command.CommandText = testQuery;
-            var result = command.ExecuteScalar();
-            Console.WriteLine($"Test query result: {result}");
-        }
-
-        dbContext.Database.CloseConnection();
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Database connection failed: {ex.Message}");
-    }
-}
-
 
 // Enable CORS
 app.UseCors("AllowReactApp");
@@ -82,7 +76,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
